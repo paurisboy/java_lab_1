@@ -1,25 +1,48 @@
 package org.example;
-
+/**
+ * The LinkedList class represents a singly linked list designed to store elements of type T.
+ * It supports operations for adding, getting, and removing elements, as well as providing information
+ * about the size of the list and whether it's empty.
+ *
+ * @param <T> The type of elements stored in the list.
+ */
 public class LinkedList<T> {
     private Node<T> head;
     private int size;
 
+    /**
+     * The nested Node class represents a list node that stores data for an element and a reference to the next node.
+     *
+     * @param <T> The data type of the element.
+     */
     private static class Node<T> {
         T data;
         Node<T> next;
 
+        /**
+         * The constructor creates a new node with the given data.
+         *
+         * @param data The data of the element.
+         */
         Node(T data) {
             this.data = data;
             this.next = null;
         }
     }
 
+    /**
+     * Constructs an empty list.
+     */
     public LinkedList() {
         head = null;
         size = 0;
     }
 
-    // Метод для добавления элемента в конец списка
+    /**
+     * Method for adding an element to the end of the list.
+     *
+     * @param data The data of the element to be added.
+     */
     public void add(T data) {
         Node<T> newNode = new Node<>(data);
         if (head == null) {
@@ -34,10 +57,16 @@ public class LinkedList<T> {
         size++;
     }
 
-    // Метод для получения элемента по индексу
+    /**
+     * Method for getting an element at the specified index.
+     *
+     * @param index The index of the element to retrieve.
+     * @return The element in the list corresponding to the specified index.
+     * @throws IndexOutOfBoundsException If the index is out of bounds.
+     */
     public T get(int index) {
         if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("Индекс выходит за пределы списка");
+            throw new IndexOutOfBoundsException("Index is out of bounds");
         }
         Node<T> current = head;
         for (int i = 0; i < index; i++) {
@@ -46,10 +75,15 @@ public class LinkedList<T> {
         return current.data;
     }
 
-    // Метод для удаления элемента по индексу
+    /**
+     * Method for removing an element at the specified index.
+     *
+     * @param index The index of the element to be removed.
+     * @throws IndexOutOfBoundsException If the index is out of bounds.
+     */
     public void remove(int index) {
         if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("Индекс выходит за пределы списка");
+            throw new IndexOutOfBoundsException("Index is out of bounds");
         }
         if (index == 0) {
             head = head.next;
@@ -63,20 +97,29 @@ public class LinkedList<T> {
         size--;
     }
 
-    // Метод для получения размера списка
+    /**
+     * Method for getting the size of the list.
+     *
+     * @return The size of the list.
+     */
     public int size() {
         return size;
     }
 
-    // Метод для проверки, пуст ли список
+    /**
+     * Method for checking if the list is empty.
+     *
+     * @return true if the list is empty, false otherwise.
+     */
     public boolean isEmpty() {
         return size == 0;
     }
 
-    // Метод для очистки списка
+    /**
+     * Method for clearing the list, removing all elements.
+     */
     public void clear() {
         head = null;
         size = 0;
     }
 }
-
