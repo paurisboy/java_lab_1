@@ -1,4 +1,4 @@
-package org.example;
+package lib.list;
 /**
  * The LinkedList class represents a singly linked list designed to store elements of type T.
  * It supports operations for adding, getting, and removing elements, as well as providing information
